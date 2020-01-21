@@ -114,4 +114,17 @@ class User
             return false;
         }
     }
+
+    function getScoreboard(){
+                // select all query
+    $query = "SELECT
+            `id`, `username`, `score`
+            FROM
+                " . $this->table_name ;
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+    // execute query
+    $stmt->execute();
+    return $stmt;
+    }
 }
