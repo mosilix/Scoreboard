@@ -27,7 +27,7 @@ if ($stmt->rowCount() > 0) {
 } else {
     $scoreboard_arr = array(
         "status" => false,
-        "message" => "Invalid Username or Password!",
+        "message" => "Could not fetch scoreboard!",
     );
 }
 // make it json format
