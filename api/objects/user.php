@@ -18,6 +18,8 @@ class User
     {
         $this->conn = $db;
     }
+
+
     // signup user
     function signup()
     {
@@ -52,6 +54,8 @@ class User
 
         return false;
     }
+
+
     // login user
     function login()
     {
@@ -68,6 +72,8 @@ class User
         $stmt->execute();
         return $stmt;
     }
+
+    //user existence checker
     function isAlreadyExist()
     {
         $query = "SELECT *
@@ -82,6 +88,29 @@ class User
         if ($stmt->rowCount() > 0) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    //update score
+    function updateScore()
+    {
+        $query = "UPDATE users SET score = ? WHERE username = ?";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute([$this->score,$this->username]);
+        if ($stmt->rowCount() > 0) {
+            $query = "SELECT *
+            FROM
+                " . $this->table_name . "
+            WHERE
+                username='" . $this->username . "'";
+                $stmt = $this->conn->prepare($query);
+            // execute query
+            $stmt->execute();
+            return $stmt;
+        }
+        else{
             return false;
         }
     }
