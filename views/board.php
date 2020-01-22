@@ -35,6 +35,7 @@
   if (!isset($_SESSION["username"]))
     header("Location: /login");
 
+    
   $url = 'http://localhost/scoreboard/api/user/get_scoreboard.php';
   $data = file_get_contents($url);
   $fullscoreboard = json_decode($data);

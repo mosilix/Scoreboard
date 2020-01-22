@@ -4,6 +4,7 @@ session_start();
 if(isset($_SESSION["username"]))
   header("Location: /board");
 
+
 if(isset($_GET['username'])&&isset($_GET['password'])){
 $username=$_GET['username'];
 $password=$_GET['password'];

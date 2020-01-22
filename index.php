@@ -2,7 +2,6 @@
 $path = trim( $_SERVER['REQUEST_URI'], '/' );
 $path = parse_url($path, PHP_URL_PATH);
 
-
 $routes = [
   '' => 'views/index.php',
   'login' => 'views/login.php',
