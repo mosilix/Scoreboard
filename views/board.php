@@ -35,7 +35,6 @@
   if (!isset($_SESSION["username"]))
     header("Location: /login");
 
-    
   $url = 'http://localhost/scoreboard/api/user/get_scoreboard.php';
   $data = file_get_contents($url);
   $fullscoreboard = json_decode($data);
@@ -60,7 +59,7 @@
     </tr>
     <?php foreach ($userscores as $userscore) : ?>
       <tr>
-        <td> <?php echo ($userscore->username==$user)? "-> ".$user : $userscore->username; ?> </td>
+        <td> <?php echo ($userscore->username==$user)? "<b style='color:green'>".$user."</b>" : $userscore->username; ?> </td>
         <td> <?php echo $userscore->score; ?> </td>
       </tr>
     <?php endforeach; ?>
